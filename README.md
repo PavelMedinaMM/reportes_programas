@@ -17,3 +17,9 @@ Los archivos se nombran `<Programa>_Desempeno_<AAAA-MM-DD>.pdf`, donde la fecha 
 Las tareas programadas copian aquí los PDF después de cada corrida; no edites los archivos a mano.
 
 Información confidencial de Multimedios. Dirección Data Analytics.
+
+## Copia en Google Drive
+Carpeta: https://drive.google.com/drive/folders/1qgFsuxKbj7mmx99L0nS-kKLXwDvHUQ1i (misma estructura).
+Una tarea programada (L–V 11:45) sube a Drive los PDF nuevos o modificados. `drive_sync.json` guarda el estado
+sincronizado (sha256 por archivo) y `python3 drive_plan.py` lista lo pendiente. Si una carpeta de programa es nueva,
+créala en Drive y agrega su ID a `drive_folders`.
