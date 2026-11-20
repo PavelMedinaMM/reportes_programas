@@ -11,12 +11,21 @@ Copia actualizada de los PDF que generan los reportes automáticos (fuente: HR M
 | `Cuando_los_Angeles_Caen/` | Cuando los Ángeles Caen | Diario L–V | CLAC |
 | `C4_en_Alerta/` | C4 en Alerta | Diario L–V | C4 |
 | `Rumbo_al_Campeonato/` | Rumbo al Campeonato | Semanal (domingos) | RAC |
-| `Tocando_al_Corazon/` | Tocando al Corazón | Manual | TAC |
+| `Tocando_al_Corazon/` | Tocando al Corazón | Diario L–V | TAC |
+| `Consolidado/` | Todos los programas en un PDF con índice | Diario L–V | este repo (`build_consolidado.py`) |
 
 Los archivos se nombran `<Programa>_Desempeno_<AAAA-MM-DD>.pdf`, donde la fecha es el día de transmisión.
 Las tareas programadas copian aquí los PDF después de cada corrida; no edites los archivos a mano.
 
 Información confidencial de Multimedios. Dirección Data Analytics.
+
+## Reporte consolidado
+`Consolidado/Consolidado_Programas_<AAAA-MM-DD>.pdf`: un PDF por día hábil con portada, índice clicable
+(share de franja y lugar por plaza), marcadores y enlace de regreso al índice en el encabezado de cada página.
+- Programas diarios: entran solo si tienen reporte de ese mismo día; si no, se omiten (el índice los lista como no incluidos).
+- Programas de fin de semana (Rumbo al Campeonato): entra su emisión del fin de semana inmediato anterior; si no existe, se omite.
+- `python3 build_consolidado.py --elaborado <HOY>` revisa todos los días desde el 1 nov 2026 y solo regenera los que
+  cambiaron (`Consolidado/manifest.json` guarda el sha256 de los reportes de entrada). Lo corre una tarea programada L–V 11:40.
 
 ## Copia en Google Drive
 Carpeta: https://drive.google.com/drive/folders/1qgFsuxKbj7mmx99L0nS-kKLXwDvHUQ1i (misma estructura).
