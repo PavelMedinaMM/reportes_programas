@@ -325,15 +325,20 @@ def build(paths, omitidos, dia, elaborado, out):
     for i in range(len(w.pages)):
         pw, ph = (float(x) for x in w.pages[i].mediabox[2:4])
         if (pw, ph) not in pies:
-            pies[(pw, ph)] = pie_drive(pw, ph, F, FB)
-        pie, prect = pies[(pw, ph)]
+            pie, prect = pie_drive(pw, ph, F, FB)
+            # Se parsea una sola vez por tamaño de página: así la fuente del pie se incrusta
+            # una vez y no en cada página (antes inflaba el PDF de ~2 MB a ~17 MB).
+            pies[(pw, ph)] = (pypdf.PdfReader(io.BytesIO(pie)).pages[0], prect)
+        pie_pg, prect = pies[(pw, ph)]
         if i >= FRONT:
-            w.pages[i].merge_page(pypdf.PdfReader(io.BytesIO(pie)).pages[0])
+            w.pages[i].merge_page(pie_pg)
+            w.pages[i].compress_content_streams()
             w.add_annotation(page_number=i, annotation=Link(rect=(0, ph - 46, pw, ph), target_page_index=1, fit=Fit.fit()))
             w.add_annotation(page_number=i, annotation=Link(rect=prect, url=DRIVE_URL))
     w.add_metadata({"/Title": f"Reporte consolidado de programas Canal 6 — {dia.isoformat()}",
                     "/Author": "Pavel Medina · Dirección Data Analytics · Multimedios"})
     w.page_mode = "/UseOutlines"
+    w.compress_identical_objects()
     with open(out, "wb") as f:
         w.write(f)
     return reps, first_pages, len(w.pages)
