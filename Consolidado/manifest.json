@@ -72,13 +72,13 @@
   "elaborado": "2026-11-23"
  },
  "2026-11-06": {
-  "archivo": "Consolidado/Consolidado_Programas_2026-11-06.pdf",
-  "corte": "2026-11-06",
+  "archivo": "Consolidado/Consolidado_Programas_2026-11-08.pdf",
+  "corte": "2026-11-08",
   "entradas": {
    "Telediario_Matutino/Telediario_Matutino_Desempeno_2026-11-06.pdf": "de55d496d9856b48821d004eb66bc6b03d7cdf7cfae834ed1ab566f3a24b2bbe",
    "Telediario_Vespertino/Telediario_Vespertino_Desempeno_2026-11-06.pdf": "fa29ec72918d319f847fff42862efa7dfce8def8ab47949df0060b775e3676b5",
    "Telediario_Nocturno/Telediario_Nocturno_Desempeno_2026-11-06.pdf": "c55d6fd09f42b17f97bd651eef8dcfa119c05617130d51bde6351dbe99dae493",
-   "Rumbo_al_Campeonato/Rumbo_al_Campeonato_Desempeno_2026-11-01.pdf": "1cc2b85d5f5db15012cf8c651ea1948d71420d92221354b50c588385f877fe0a"
+   "Rumbo_al_Campeonato/Rumbo_al_Campeonato_Desempeno_2026-11-08.pdf": "41a8504afef85ecafe4445d56f5cd2c55642aa6bd200ec761470ad899148b5c0"
   },
   "omitidos": [
    "Vivalavi",
@@ -162,11 +162,11 @@
   "elaborado": "2026-11-23"
  },
  "2026-11-13": {
-  "archivo": "Consolidado/Consolidado_Programas_2026-11-13.pdf",
-  "corte": "2026-11-13",
+  "archivo": "Consolidado/Consolidado_Programas_2026-11-15.pdf",
+  "corte": "2026-11-15",
   "entradas": {
    "Telediario_Matutino/Telediario_Matutino_Desempeno_2026-11-13.pdf": "c30d00985422552f91e2293f92150423c1c5a5790ac2d6d53a79d4476da3db1c",
-   "Rumbo_al_Campeonato/Rumbo_al_Campeonato_Desempeno_2026-11-08.pdf": "41a8504afef85ecafe4445d56f5cd2c55642aa6bd200ec761470ad899148b5c0"
+   "Rumbo_al_Campeonato/Rumbo_al_Campeonato_Desempeno_2026-11-15.pdf": "1b5e556e34a42e212e28b2e89388fe73e7980104f70b79039a1fb9cc11a92564"
   },
   "omitidos": [
    "Vivalavi",
@@ -250,8 +250,8 @@
   "elaborado": "2026-11-23"
  },
  "2026-11-20": {
-  "archivo": "Consolidado/Consolidado_Programas_2026-11-20.pdf",
-  "corte": "2026-11-20",
+  "archivo": "Consolidado/Consolidado_Programas_2026-11-22.pdf",
+  "corte": "2026-11-22",
   "entradas": {
    "Telediario_Matutino/Telediario_Matutino_Desempeno_2026-11-20.pdf": "1bac4502358e9fd71b0eccaacb0243a11ad1662298e55af4b0b485d7bbdb62f9",
    "Vivalavi/Vivalavi_Desempeno_2026-11-20.pdf": "0ac34757dce594fee977962e88c32e98b9579666f8a626fa5d07983c5cc5d4b0",
@@ -260,7 +260,7 @@
    "C4_en_Alerta/C4_Desempeno_2026-11-20.pdf": "ed1faf279f241781da28a1f1965839b3292968ff279c17a5ff8580f00516226c",
    "Telediario_Nocturno/Telediario_Nocturno_Desempeno_2026-11-20.pdf": "76d514b4c62d64eaf930baf42b8ba895d18cc50564c9322684bf8b6cbad0693d",
    "Cuando_los_Angeles_Caen/CLAC_Desempeno_2026-11-20.pdf": "07b586b0db298839074ea8ebb4de956ab1a6851aab0b380cc26b9ec953983d75",
-   "Rumbo_al_Campeonato/Rumbo_al_Campeonato_Desempeno_2026-11-15.pdf": "1b5e556e34a42e212e28b2e89388fe73e7980104f70b79039a1fb9cc11a92564"
+   "Rumbo_al_Campeonato/Rumbo_al_Campeonato_Desempeno_2026-11-22.pdf": "23664c892ad46551d3446bf0d5519f0cb110f6a534090fdeb225622314a683e3"
   },
   "omitidos": [],
   "paginas": 156,

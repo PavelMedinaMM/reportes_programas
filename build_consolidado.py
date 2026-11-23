@@ -3,8 +3,10 @@
 
 Un consolidado por día hábil con:
   - los programas diarios que tienen reporte de ese mismo día (si no lo tienen, no se incluyen),
-  - los programas de fin de semana con su emisión más reciente que no sea posterior a ese día
-    (fin de semana inmediato anterior); si no existe, no se incluyen.
+  - los programas de fin de semana: el viernes (cierre de semana) entran con la emisión del
+    sáb/dom de esa misma semana, así el consolidado del viernes cubre la semana completa hasta el
+    domingo; de lunes a jueves (o si la del fin de semana aún no existe) entra la del fin de semana
+    inmediato anterior; si no existe, no se incluyen.
 El nombre (Consolidado/Consolidado_Programas_<AAAA-MM-DD>.pdf), la portada y los encabezados
 usan la fecha del último dato incluido, para que ningún consolidado traiga datos posteriores
 a la fecha que lo identifica.
@@ -152,7 +154,6 @@ def ultimo_dato(paths):
 def build_front(reps, W, H, elaborado, F, FB, first_pages, dia, omitidos):
     buf = io.BytesIO(); c = canvas.Canvas(buf, pagesize=(W, H))
     corte = max(r["fecha"] for r in reps)
-    previos = sorted({r["fecha"] for r in reps if r["fecha"] < corte})
 
     # ---- Portada
     c.setFillColor(BG); c.rect(0, 0, W, H, stroke=0, fill=1)
@@ -167,11 +168,12 @@ def build_front(reps, W, H, elaborado, F, FB, first_pages, dia, omitidos):
     c.setFillColor(RED); c.setFont(FB, 9); c.drawString(58, y, "DATOS AL")
     c.setFillColor(INK); c.setFont(FB, 16); c.drawString(58, y - 22, fecha_larga(corte))
     c.setFillColor(GREY); c.setFont(F, 9)
-    if previos:
-        c.drawString(58, y - 38, "Programas diarios: datos de este día. Fin de semana: última emisión ("
-                     + ", ".join(fecha_corta(f) for f in previos) + ").")
-    else:
-        c.drawString(58, y - 38, "Todos los programas con datos de este día.")
+    diar = sorted({r["fecha"] for r in reps if r["fecha"].weekday() < 5})
+    fds = sorted({r["fecha"] for r in reps if r["fecha"].weekday() >= 5})
+    partes = []
+    if diar: partes.append("programas diarios, " + ", ".join(fecha_corta(f) for f in diar))
+    if fds: partes.append("fin de semana, " + ", ".join(fecha_corta(f) for f in fds))
+    c.drawString(58, y - 38, "Incluye: " + "; ".join(partes) + ".")
     c.setFillColor(RED); c.setFont(FB, 9); c.drawString(58, y - 80, "ELABORÓ")
     c.setFillColor(INK); c.setFont(FB, 16); c.drawString(58, y - 102, "Pavel Medina")
     c.setFillColor(GREY); c.setFont(F, 10); c.drawString(58, y - 118, "Dirección Data Analytics · Multimedios")
@@ -285,14 +287,17 @@ def es_fin_de_semana(fechas):
 def seleccion(inv, dia):
     """Reportes que entran al consolidado de `dia` y programas omitidos.
     Diarios: solo si tienen reporte de ese mismo día.
-    Fin de semana: su emisión más reciente que no sea posterior a `dia` (fin de semana inmediato
-    anterior); si no existe, se omite. Así ningún consolidado trae datos posteriores a su fecha."""
+    Fin de semana: el viernes, la emisión del sáb/dom de esa misma semana (cierre de semana hasta
+    el domingo); de lunes a jueves, o si aquella aún no existe, la del fin de semana inmediato
+    anterior; si no existe, se omite. El nombre del PDF toma la fecha del último dato incluido."""
     lunes = dia - dt.timedelta(days=dia.weekday())
-    anterior = {lunes - dt.timedelta(days=1), lunes - dt.timedelta(days=2)}  # dom y sáb previos
+    anterior = {lunes - dt.timedelta(days=1), lunes - dt.timedelta(days=2)}  # sáb y dom previos
+    misma = {lunes + dt.timedelta(days=5), lunes + dt.timedelta(days=6)}     # sáb y dom de la semana
     incl, omit = [], []
     for d, fechas in inv.items():
         if es_fin_de_semana(fechas):
-            ok = sorted(f for f in fechas if f in anterior)
+            ok = (sorted(f for f in fechas if f in misma) if dia.weekday() == 4 else []) \
+                or sorted(f for f in fechas if f in anterior)
             (incl.append(fechas[ok[-1]]) if ok else omit.append(d))
         else:
             (incl.append(fechas[dia]) if dia in fechas else omit.append(d))
