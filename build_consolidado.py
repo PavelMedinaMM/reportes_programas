@@ -3,8 +3,8 @@
 
 Un consolidado por día hábil (Consolidado/Consolidado_Programas_<AAAA-MM-DD>.pdf) con:
   - los programas diarios que tienen reporte de ese mismo día (si no lo tienen, no se incluyen),
-  - los programas de fin de semana con su emisión del fin de semana inmediato anterior
-    (si no existe, no se incluyen).
+  - los programas de fin de semana con su emisión del sáb/dom de la misma semana (lunes a
+    domingo); si aún no existe, la del fin de semana anterior; si tampoco, no se incluyen.
 Arma un solo PDF con:
   - portada,
   - índice con share de franja y lugar por plaza (cada fila es un enlace al programa),
@@ -240,13 +240,15 @@ def es_fin_de_semana(fechas):
 def seleccion(inv, dia):
     """Reportes que entran al consolidado de `dia` y programas omitidos.
     Diarios: solo si tienen reporte de ese mismo día.
-    Fin de semana: su emisión del fin de semana inmediato anterior (sáb/dom); si no existe, se omite."""
-    domingo = dia - dt.timedelta(days=dia.weekday() + 1)
-    vigentes = {domingo, domingo - dt.timedelta(days=1)}
+    Fin de semana (semana de lunes a domingo): su emisión del sáb/dom de la misma semana de `dia`;
+    si aún no existe, la del fin de semana anterior; si tampoco existe, se omite."""
+    domingo = dia + dt.timedelta(days=6 - dia.weekday())
+    misma = {domingo, domingo - dt.timedelta(days=1)}
+    anterior = {f - dt.timedelta(days=7) for f in misma}
     incl, omit = [], []
     for d, fechas in inv.items():
         if es_fin_de_semana(fechas):
-            ok = sorted(f for f in fechas if f in vigentes)
+            ok = sorted(f for f in fechas if f in misma) or sorted(f for f in fechas if f in anterior)
             (incl.append(fechas[ok[-1]]) if ok else omit.append(d))
         else:
             (incl.append(fechas[dia]) if dia in fechas else omit.append(d))

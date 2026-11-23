@@ -4,7 +4,7 @@
   "entradas": {
    "Telediario_Matutino/Telediario_Matutino_Desempeno_2026-11-02.pdf": "34b219e87771c10f4f0368808ac1657ed8066cf8e77c663ee678aae35fb344f4",
    "Telediario_Nocturno/Telediario_Nocturno_Desempeno_2026-11-02.pdf": "9efb2cf867dfe47ae6b79408ae64c0612fd19f06c8ccf59e2a738250fc3cb50d",
-   "Rumbo_al_Campeonato/Rumbo_al_Campeonato_Desempeno_2026-11-01.pdf": "1cc2b85d5f5db15012cf8c651ea1948d71420d92221354b50c588385f877fe0a"
+   "Rumbo_al_Campeonato/Rumbo_al_Campeonato_Desempeno_2026-11-08.pdf": "41a8504afef85ecafe4445d56f5cd2c55642aa6bd200ec761470ad899148b5c0"
   },
   "omitidos": [
    "Vivalavi",
@@ -14,13 +14,13 @@
    "Cuando los Ángeles Caen"
   ],
   "paginas": 53,
-  "elaborado": "2026-11-20"
+  "elaborado": "2026-11-23"
  },
  "2026-11-03": {
   "archivo": "Consolidado/Consolidado_Programas_2026-11-03.pdf",
   "entradas": {
    "Telediario_Matutino/Telediario_Matutino_Desempeno_2026-11-03.pdf": "4e35e89928ee718494524419aa6b86fc82276ae8edb4433404221b2fd65edcff",
-   "Rumbo_al_Campeonato/Rumbo_al_Campeonato_Desempeno_2026-11-01.pdf": "1cc2b85d5f5db15012cf8c651ea1948d71420d92221354b50c588385f877fe0a"
+   "Rumbo_al_Campeonato/Rumbo_al_Campeonato_Desempeno_2026-11-08.pdf": "41a8504afef85ecafe4445d56f5cd2c55642aa6bd200ec761470ad899148b5c0"
   },
   "omitidos": [
    "Vivalavi",
@@ -31,13 +31,13 @@
    "Cuando los Ángeles Caen"
   ],
   "paginas": 33,
-  "elaborado": "2026-11-20"
+  "elaborado": "2026-11-23"
  },
  "2026-11-04": {
   "archivo": "Consolidado/Consolidado_Programas_2026-11-04.pdf",
   "entradas": {
    "Telediario_Matutino/Telediario_Matutino_Desempeno_2026-11-04.pdf": "3a28122624f92237b503d7f1aee38e8b36700b8b273f143e5b9ef4378ed879f2",
-   "Rumbo_al_Campeonato/Rumbo_al_Campeonato_Desempeno_2026-11-01.pdf": "1cc2b85d5f5db15012cf8c651ea1948d71420d92221354b50c588385f877fe0a"
+   "Rumbo_al_Campeonato/Rumbo_al_Campeonato_Desempeno_2026-11-08.pdf": "41a8504afef85ecafe4445d56f5cd2c55642aa6bd200ec761470ad899148b5c0"
   },
   "omitidos": [
    "Vivalavi",
@@ -48,13 +48,13 @@
    "Cuando los Ángeles Caen"
   ],
   "paginas": 33,
-  "elaborado": "2026-11-20"
+  "elaborado": "2026-11-23"
  },
  "2026-11-05": {
   "archivo": "Consolidado/Consolidado_Programas_2026-11-05.pdf",
   "entradas": {
    "Telediario_Matutino/Telediario_Matutino_Desempeno_2026-11-05.pdf": "579fb0b83da4d09742d68a0555e33b12eb1cafd104cd9cc01f6e23b95f59ce41",
-   "Rumbo_al_Campeonato/Rumbo_al_Campeonato_Desempeno_2026-11-01.pdf": "1cc2b85d5f5db15012cf8c651ea1948d71420d92221354b50c588385f877fe0a"
+   "Rumbo_al_Campeonato/Rumbo_al_Campeonato_Desempeno_2026-11-08.pdf": "41a8504afef85ecafe4445d56f5cd2c55642aa6bd200ec761470ad899148b5c0"
   },
   "omitidos": [
    "Vivalavi",
@@ -65,7 +65,7 @@
    "Cuando los Ángeles Caen"
   ],
   "paginas": 33,
-  "elaborado": "2026-11-20"
+  "elaborado": "2026-11-23"
  },
  "2026-11-06": {
   "archivo": "Consolidado/Consolidado_Programas_2026-11-06.pdf",
@@ -73,7 +73,7 @@
    "Telediario_Matutino/Telediario_Matutino_Desempeno_2026-11-06.pdf": "de55d496d9856b48821d004eb66bc6b03d7cdf7cfae834ed1ab566f3a24b2bbe",
    "Telediario_Vespertino/Telediario_Vespertino_Desempeno_2026-11-06.pdf": "fa29ec72918d319f847fff42862efa7dfce8def8ab47949df0060b775e3676b5",
    "Telediario_Nocturno/Telediario_Nocturno_Desempeno_2026-11-06.pdf": "c55d6fd09f42b17f97bd651eef8dcfa119c05617130d51bde6351dbe99dae493",
-   "Rumbo_al_Campeonato/Rumbo_al_Campeonato_Desempeno_2026-11-01.pdf": "1cc2b85d5f5db15012cf8c651ea1948d71420d92221354b50c588385f877fe0a"
+   "Rumbo_al_Campeonato/Rumbo_al_Campeonato_Desempeno_2026-11-08.pdf": "41a8504afef85ecafe4445d56f5cd2c55642aa6bd200ec761470ad899148b5c0"
   },
   "omitidos": [
    "Vivalavi",
@@ -82,7 +82,7 @@
    "Cuando los Ángeles Caen"
   ],
   "paginas": 73,
-  "elaborado": "2026-11-20"
+  "elaborado": "2026-11-23"
  },
  "2026-11-09": {
   "archivo": "Consolidado/Consolidado_Programas_2026-11-09.pdf",
@@ -92,14 +92,14 @@
    "Telediario_Vespertino/Telediario_Vespertino_Desempeno_2026-11-09.pdf": "738225761566d7e89829022baa216c6638042cacb4643caddc8ed6406783d7b2",
    "Telediario_Nocturno/Telediario_Nocturno_Desempeno_2026-11-09.pdf": "0f827d36166ae0a890c74c4c6571c89a2f0e115e9de704377ab63d78a8c675d1",
    "Cuando_los_Angeles_Caen/CLAC_Desempeno_2026-11-09.pdf": "e9d5253b26d90394e7853dff6d083b8dd3256f31853cbaf52ed2135b830b4558",
-   "Rumbo_al_Campeonato/Rumbo_al_Campeonato_Desempeno_2026-11-08.pdf": "41a8504afef85ecafe4445d56f5cd2c55642aa6bd200ec761470ad899148b5c0"
+   "Rumbo_al_Campeonato/Rumbo_al_Campeonato_Desempeno_2026-11-15.pdf": "1b5e556e34a42e212e28b2e89388fe73e7980104f70b79039a1fb9cc11a92564"
   },
   "omitidos": [
    "Tocando al Corazón",
    "C4 en Alerta"
   ],
   "paginas": 113,
-  "elaborado": "2026-11-20"
+  "elaborado": "2026-11-23"
  },
  "2026-11-10": {
   "archivo": "Consolidado/Consolidado_Programas_2026-11-10.pdf",
@@ -110,13 +110,13 @@
    "C4_en_Alerta/C4_Desempeno_2026-11-10.pdf": "a352df60e2d7ccd3ea9725e91355c5947836bf484bab6c8562af03b11db91900",
    "Telediario_Nocturno/Telediario_Nocturno_Desempeno_2026-11-10.pdf": "bb16f1f77cf88e68775a70ba81acb9df29b490350c328c3a9ff6ae53daa331e0",
    "Cuando_los_Angeles_Caen/CLAC_Desempeno_2026-11-10.pdf": "723e3c7f2a69c196e2c55216f2702f43533e8645328865ae2cb25ef40a896c6e",
-   "Rumbo_al_Campeonato/Rumbo_al_Campeonato_Desempeno_2026-11-08.pdf": "41a8504afef85ecafe4445d56f5cd2c55642aa6bd200ec761470ad899148b5c0"
+   "Rumbo_al_Campeonato/Rumbo_al_Campeonato_Desempeno_2026-11-15.pdf": "1b5e556e34a42e212e28b2e89388fe73e7980104f70b79039a1fb9cc11a92564"
   },
   "omitidos": [
    "Tocando al Corazón"
   ],
   "paginas": 133,
-  "elaborado": "2026-11-20"
+  "elaborado": "2026-11-23"
  },
  "2026-11-11": {
   "archivo": "Consolidado/Consolidado_Programas_2026-11-11.pdf",
@@ -127,13 +127,13 @@
    "C4_en_Alerta/C4_Desempeno_2026-11-11.pdf": "4e80d7b45cfe7750a659d8c6bb92a30fbeecef2c2212176e30376f322f3dc4ae",
    "Telediario_Nocturno/Telediario_Nocturno_Desempeno_2026-11-11.pdf": "57de2f1b90d2b23d5d451922c250b5a820190cd0ba3983ba5ef9586f9d709f35",
    "Cuando_los_Angeles_Caen/CLAC_Desempeno_2026-11-11.pdf": "ba1e2bd2e12cd1e07186ea12418c380ff20fbc7d07f26a878d4f3a63bd1bc3d7",
-   "Rumbo_al_Campeonato/Rumbo_al_Campeonato_Desempeno_2026-11-08.pdf": "41a8504afef85ecafe4445d56f5cd2c55642aa6bd200ec761470ad899148b5c0"
+   "Rumbo_al_Campeonato/Rumbo_al_Campeonato_Desempeno_2026-11-15.pdf": "1b5e556e34a42e212e28b2e89388fe73e7980104f70b79039a1fb9cc11a92564"
   },
   "omitidos": [
    "Tocando al Corazón"
   ],
   "paginas": 133,
-  "elaborado": "2026-11-20"
+  "elaborado": "2026-11-23"
  },
  "2026-11-12": {
   "archivo": "Consolidado/Consolidado_Programas_2026-11-12.pdf",
@@ -144,19 +144,19 @@
    "C4_en_Alerta/C4_Desempeno_2026-11-12.pdf": "422abee19cb7e0b1df3df78deed0a8b3eefc78316e3a6626b38699898ed779ea",
    "Telediario_Nocturno/Telediario_Nocturno_Desempeno_2026-11-12.pdf": "e54ed078cd6ce50219deda92ee063e0812963dd3dd43bf31dbb432e93052d3b3",
    "Cuando_los_Angeles_Caen/CLAC_Desempeno_2026-11-12.pdf": "55605560677e8a5f051c5c064fedfc4c67daa858e7c5eae380ed7681038e58ca",
-   "Rumbo_al_Campeonato/Rumbo_al_Campeonato_Desempeno_2026-11-08.pdf": "41a8504afef85ecafe4445d56f5cd2c55642aa6bd200ec761470ad899148b5c0"
+   "Rumbo_al_Campeonato/Rumbo_al_Campeonato_Desempeno_2026-11-15.pdf": "1b5e556e34a42e212e28b2e89388fe73e7980104f70b79039a1fb9cc11a92564"
   },
   "omitidos": [
    "Tocando al Corazón"
   ],
   "paginas": 133,
-  "elaborado": "2026-11-20"
+  "elaborado": "2026-11-23"
  },
  "2026-11-13": {
   "archivo": "Consolidado/Consolidado_Programas_2026-11-13.pdf",
   "entradas": {
    "Telediario_Matutino/Telediario_Matutino_Desempeno_2026-11-13.pdf": "c30d00985422552f91e2293f92150423c1c5a5790ac2d6d53a79d4476da3db1c",
-   "Rumbo_al_Campeonato/Rumbo_al_Campeonato_Desempeno_2026-11-08.pdf": "41a8504afef85ecafe4445d56f5cd2c55642aa6bd200ec761470ad899148b5c0"
+   "Rumbo_al_Campeonato/Rumbo_al_Campeonato_Desempeno_2026-11-15.pdf": "1b5e556e34a42e212e28b2e89388fe73e7980104f70b79039a1fb9cc11a92564"
   },
   "omitidos": [
    "Vivalavi",
@@ -167,7 +167,7 @@
    "Cuando los Ángeles Caen"
   ],
   "paginas": 33,
-  "elaborado": "2026-11-20"
+  "elaborado": "2026-11-23"
  },
  "2026-11-16": {
   "archivo": "Consolidado/Consolidado_Programas_2026-11-16.pdf",
@@ -178,19 +178,19 @@
    "C4_en_Alerta/C4_Desempeno_2026-11-16.pdf": "c4fdafe8c9933d1db7485ad948817949878b8bf0e578f1e1e9f805c618ddea0e",
    "Telediario_Nocturno/Telediario_Nocturno_Desempeno_2026-11-16.pdf": "c44d8f483d7dc827c5c199950f3be47ea174597455bc400803102da68bacf5f5",
    "Cuando_los_Angeles_Caen/CLAC_Desempeno_2026-11-16.pdf": "720a34b1bec9f8ba92d4a092d3ca774a7dbaa34820d15656b02c1c2bdc06ce14",
-   "Rumbo_al_Campeonato/Rumbo_al_Campeonato_Desempeno_2026-11-15.pdf": "1b5e556e34a42e212e28b2e89388fe73e7980104f70b79039a1fb9cc11a92564"
+   "Rumbo_al_Campeonato/Rumbo_al_Campeonato_Desempeno_2026-11-22.pdf": "23664c892ad46551d3446bf0d5519f0cb110f6a534090fdeb225622314a683e3"
   },
   "omitidos": [
    "Tocando al Corazón"
   ],
   "paginas": 133,
-  "elaborado": "2026-11-20"
+  "elaborado": "2026-11-23"
  },
  "2026-11-17": {
   "archivo": "Consolidado/Consolidado_Programas_2026-11-17.pdf",
   "entradas": {
    "Telediario_Matutino/Telediario_Matutino_Desempeno_2026-11-17.pdf": "85a6d3673bca21caa5db111f030f359ff95b3ddac4e735bb953f36076508d1e9",
-   "Rumbo_al_Campeonato/Rumbo_al_Campeonato_Desempeno_2026-11-15.pdf": "1b5e556e34a42e212e28b2e89388fe73e7980104f70b79039a1fb9cc11a92564"
+   "Rumbo_al_Campeonato/Rumbo_al_Campeonato_Desempeno_2026-11-22.pdf": "23664c892ad46551d3446bf0d5519f0cb110f6a534090fdeb225622314a683e3"
   },
   "omitidos": [
    "Vivalavi",
@@ -201,7 +201,7 @@
    "Cuando los Ángeles Caen"
   ],
   "paginas": 33,
-  "elaborado": "2026-11-20"
+  "elaborado": "2026-11-23"
  },
  "2026-11-18": {
   "archivo": "Consolidado/Consolidado_Programas_2026-11-18.pdf",
@@ -213,11 +213,11 @@
    "C4_en_Alerta/C4_Desempeno_2026-11-18.pdf": "15a2b4d305cf765c537fa9751ce19c59c272dbd37fe2d945cf64340fd273c96d",
    "Telediario_Nocturno/Telediario_Nocturno_Desempeno_2026-11-18.pdf": "022152a4d7b795bce1c408310423164bcf3a091dc6ef513b24d0a3717869b9f4",
    "Cuando_los_Angeles_Caen/CLAC_Desempeno_2026-11-18.pdf": "5387292a38c54d9ba16a5dd4af8ceafa66677b2044a1ea9a85e586df16031872",
-   "Rumbo_al_Campeonato/Rumbo_al_Campeonato_Desempeno_2026-11-15.pdf": "1b5e556e34a42e212e28b2e89388fe73e7980104f70b79039a1fb9cc11a92564"
+   "Rumbo_al_Campeonato/Rumbo_al_Campeonato_Desempeno_2026-11-22.pdf": "23664c892ad46551d3446bf0d5519f0cb110f6a534090fdeb225622314a683e3"
   },
   "omitidos": [],
   "paginas": 156,
-  "elaborado": "2026-11-20"
+  "elaborado": "2026-11-23"
  },
  "2026-11-19": {
   "archivo": "Consolidado/Consolidado_Programas_2026-11-19.pdf",
@@ -229,11 +229,11 @@
    "C4_en_Alerta/C4_Desempeno_2026-11-19.pdf": "a496eccebe45415c19803444649ed9919e73e819740f1a20d24210c59a5208d3",
    "Telediario_Nocturno/Telediario_Nocturno_Desempeno_2026-11-19.pdf": "c1845214d3e7e7a67e0fa5ab6558019f993b650d3934d53ef468db082847b2e6",
    "Cuando_los_Angeles_Caen/CLAC_Desempeno_2026-11-19.pdf": "11eb6928666549e0e6bf6b11cbd3abf3cbbb21471abf933f11eb58a71e31fe12",
-   "Rumbo_al_Campeonato/Rumbo_al_Campeonato_Desempeno_2026-11-15.pdf": "1b5e556e34a42e212e28b2e89388fe73e7980104f70b79039a1fb9cc11a92564"
+   "Rumbo_al_Campeonato/Rumbo_al_Campeonato_Desempeno_2026-11-22.pdf": "23664c892ad46551d3446bf0d5519f0cb110f6a534090fdeb225622314a683e3"
   },
   "omitidos": [],
   "paginas": 156,
-  "elaborado": "2026-11-20"
+  "elaborado": "2026-11-23"
  },
  "2026-11-20": {
   "archivo": "Consolidado/Consolidado_Programas_2026-11-20.pdf",
@@ -245,7 +245,7 @@
    "C4_en_Alerta/C4_Desempeno_2026-11-20.pdf": "ed1faf279f241781da28a1f1965839b3292968ff279c17a5ff8580f00516226c",
    "Telediario_Nocturno/Telediario_Nocturno_Desempeno_2026-11-20.pdf": "76d514b4c62d64eaf930baf42b8ba895d18cc50564c9322684bf8b6cbad0693d",
    "Cuando_los_Angeles_Caen/CLAC_Desempeno_2026-11-20.pdf": "07b586b0db298839074ea8ebb4de956ab1a6851aab0b380cc26b9ec953983d75",
-   "Rumbo_al_Campeonato/Rumbo_al_Campeonato_Desempeno_2026-11-15.pdf": "1b5e556e34a42e212e28b2e89388fe73e7980104f70b79039a1fb9cc11a92564"
+   "Rumbo_al_Campeonato/Rumbo_al_Campeonato_Desempeno_2026-11-22.pdf": "23664c892ad46551d3446bf0d5519f0cb110f6a534090fdeb225622314a683e3"
   },
   "omitidos": [],
   "paginas": 156,
