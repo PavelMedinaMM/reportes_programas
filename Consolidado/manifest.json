@@ -234,5 +234,22 @@
   "omitidos": [],
   "paginas": 156,
   "elaborado": "2026-11-20"
+ },
+ "2026-11-20": {
+  "archivo": "Consolidado/Consolidado_Programas_2026-11-20.pdf",
+  "entradas": {
+   "Tocando_al_Corazon/TAC_Desempeno_2026-11-20.pdf": "625ccc8a653f5b777298258ba2fc2c3680f734107f87374aedeefc03ee9973b9",
+   "Rumbo_al_Campeonato/Rumbo_al_Campeonato_Desempeno_2026-11-15.pdf": "1b5e556e34a42e212e28b2e89388fe73e7980104f70b79039a1fb9cc11a92564"
+  },
+  "omitidos": [
+   "Telediario Matutino",
+   "Vivalavi",
+   "Telediario Vespertino",
+   "C4 en Alerta",
+   "Telediario Nocturno",
+   "Cuando los Ángeles Caen"
+  ],
+  "paginas": 36,
+  "elaborado": "2026-11-23"
  }
 }
