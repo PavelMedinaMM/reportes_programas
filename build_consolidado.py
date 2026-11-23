@@ -45,6 +45,8 @@ MESES = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto
          "septiembre", "octubre", "noviembre", "diciembre"]
 DIAS = ["lunes", "martes", "miércoles", "jueves", "viernes", "sábado", "domingo"]
 
+DRIVE_URL = "https://drive.google.com/drive/folders/1qgFsuxKbj7mmx99L0nS-kKLXwDvHUQ1i?usp=sharing"
+
 RED = HexColor("#D7262B"); INK = HexColor("#1E1E1E"); GREY = HexColor("#6B6B6B")
 LINE = HexColor("#BDBDBD"); BG = HexColor("#F2F2F2"); ROWALT = HexColor("#E9E9E9")
 
@@ -113,6 +115,32 @@ def draw_frame(c, W, H, F, FB, elaborado, label):
     c.drawRightString(W - 38, 40, f"Elaborado el {elaborado.day} de {MESES[elaborado.month-1]} de {elaborado.year}")
 
 
+def boton_drive(c, x, y, w, h, F, FB, titulo, accion):
+    """Botón rojo con enlace a la carpeta de Drive de reportes individuales."""
+    c.setFillColor(RED); c.roundRect(x, y, w, h, 6, stroke=0, fill=1)
+    c.setFillColor(HexColor("#FFFFFF"))
+    if titulo:
+        c.setFont(F, 9); c.drawString(x + 14, y + h - 17, titulo)
+        c.setFont(FB, 13); c.drawString(x + 14, y + 11, accion)
+    else:
+        c.setFont(FB, 10); c.drawCentredString(x + w / 2, y + (h - 7) / 2, accion)
+    return (x, y, x + w, y + h)
+
+
+def pie_drive(W, H, F, FB):
+    """Overlay de una página: franja inferior con el enlace a Drive. Devuelve (pdf, rect)."""
+    buf = io.BytesIO(); c = canvas.Canvas(buf, pagesize=(W, H))
+    txt1 = "¿Solo te interesa un programa? Reportes individuales en Drive: "
+    txt2 = "Clic aquí"
+    w1 = pdfmetrics.stringWidth(txt1, F, 7.5); w2 = pdfmetrics.stringWidth(txt2, FB, 7.5)
+    x1 = W - 40 - w1 - w2
+    c.setFillColor(GREY); c.setFont(F, 7.5); c.drawString(x1, 4.5, txt1)
+    c.setFillColor(RED); c.setFont(FB, 7.5); c.drawString(x1 + w1, 4.5, txt2)
+    c.setStrokeColor(RED); c.setLineWidth(0.5); c.line(x1 + w1, 3.5, x1 + w1 + w2, 3.5)
+    c.showPage(); c.save()
+    return buf.getvalue(), (x1 - 2, 1, W - 38, 13)
+
+
 def build_front(reps, W, H, elaborado, F, FB, first_pages, dia, omitidos):
     buf = io.BytesIO(); c = canvas.Canvas(buf, pagesize=(W, H))
     corte = dia
@@ -143,11 +171,14 @@ def build_front(reps, W, H, elaborado, F, FB, first_pages, dia, omitidos):
         ("Marcadores", "Panel lateral del lector: programa > página."),
         ("Contenido", "Cada sección es el reporte completo, sin cambios, tal como lo genera"),
         ("", "su tarea programada (diario L–V; Rumbo al Campeonato, semanal)."),
+        ("Individuales", "Cada programa por separado está en Drive (botón de abajo y pie de página)."),
     ]
     yy = y - 24
     for k, v in notas:
         c.setFillColor(INK); c.setFont(FB, 9); c.drawString(x2, yy, k)
         c.setFont(F, 9); c.drawString(x2 + 80, yy, v); yy -= 17
+    links = [boton_drive(c, x2, yy - 52, 330, 48, F, FB, "¿Solo te interesa un programa? Consulta los reportes individuales",
+                         "Clic aquí para abrirlos en Drive  →")]
     c.setStrokeColor(LINE); c.setLineWidth(0.8); c.line(58, 54, W - 58, 54)
     c.setFillColor(GREY); c.setFont(F, 8)
     c.drawString(58, 40, "Documento de uso interno · Multimedios · Información confidencial")
@@ -158,7 +189,8 @@ def build_front(reps, W, H, elaborado, F, FB, first_pages, dia, omitidos):
     draw_frame(c, W, H, F, FB, elaborado, f"REPORTE CONSOLIDADO · CANAL 6 · CORTE AL {corte.day} {MESES[corte.month-1][:3].upper()} {corte.year}")
     c.setFillColor(INK); c.setFont(FB, 24); c.drawString(38, H - 66, "Índice")
     c.setFillColor(GREY); c.setFont(F, 9)
-    c.drawRightString(W - 38, H - 62, "Share de franja del mes en curso · lugar por rating · haz clic en un programa para ir a su reporte")
+    c.drawString(130, H - 62, "Share de franja del mes en curso · lugar por rating · haz clic en un programa para ir a su reporte")
+    links.append(boton_drive(c, W - 38 - 250, H - 72, 250, 26, F, FB, None, "Reportes individuales en Drive · Clic aquí  →"))
     c.setStrokeColor(INK); c.setLineWidth(1); c.line(38, H - 80, W - 38, H - 80)
 
     cols = {"n": 38, "prog": 66, "dato": 446, "CDMX": 560, "Monterrey": 660, "Guadalajara": 770, "pag": W - 38}
@@ -200,7 +232,7 @@ def build_front(reps, W, H, elaborado, F, FB, first_pages, dia, omitidos):
         c.setFillColor(RED); c.setFont(FB, 8)
         c.drawString(38, 76, "Sin reporte para este día (no incluidos): " + ", ".join(omitidos) + ".")
     c.showPage(); c.save()
-    return buf.getvalue(), rects, corte
+    return buf.getvalue(), rects, corte, links
 
 
 DESDE = dt.date(2026, 11, 1)  # primer día con consolidado
@@ -271,7 +303,7 @@ def build(paths, omitidos, dia, elaborado, out):
     first_pages, p = [], FRONT
     for r in reps:
         first_pages.append(p); p += r["n"]
-    front_pdf, rects, _ = build_front(reps, W, H, elaborado, F, FB, first_pages, dia, omitidos)
+    front_pdf, rects, _, links = build_front(reps, W, H, elaborado, F, FB, first_pages, dia, omitidos)
 
     w = pypdf.PdfWriter()
     for pg in pypdf.PdfReader(io.BytesIO(front_pdf)).pages:
@@ -287,9 +319,18 @@ def build(paths, omitidos, dia, elaborado, out):
             w.add_outline_item(t or ("Portada" if j == 0 else f"Página {j+1}"), fp + j, parent=parent, fit=Fit.fit())
     for rect, fp in zip(rects, first_pages):
         w.add_annotation(page_number=1, annotation=Link(rect=rect, target_page_index=fp, fit=Fit.fit()))
-    for i in range(FRONT, len(w.pages)):
+    for pg_i, rect in zip((0, 1), links):
+        w.add_annotation(page_number=pg_i, annotation=Link(rect=rect, url=DRIVE_URL))
+    pies = {}
+    for i in range(len(w.pages)):
         pw, ph = (float(x) for x in w.pages[i].mediabox[2:4])
-        w.add_annotation(page_number=i, annotation=Link(rect=(0, ph - 46, pw, ph), target_page_index=1, fit=Fit.fit()))
+        if (pw, ph) not in pies:
+            pies[(pw, ph)] = pie_drive(pw, ph, F, FB)
+        pie, prect = pies[(pw, ph)]
+        if i >= FRONT:
+            w.pages[i].merge_page(pypdf.PdfReader(io.BytesIO(pie)).pages[0])
+            w.add_annotation(page_number=i, annotation=Link(rect=(0, ph - 46, pw, ph), target_page_index=1, fit=Fit.fit()))
+            w.add_annotation(page_number=i, annotation=Link(rect=prect, url=DRIVE_URL))
     w.add_metadata({"/Title": f"Reporte consolidado de programas Canal 6 — {dia.isoformat()}",
                     "/Author": "Pavel Medina · Dirección Data Analytics · Multimedios"})
     w.page_mode = "/UseOutlines"

@@ -22,6 +22,8 @@ Información confidencial de Multimedios. Dirección Data Analytics.
 ## Reporte consolidado
 `Consolidado/Consolidado_Programas_<AAAA-MM-DD>.pdf`: un PDF por día hábil con portada, índice clicable
 (share de franja y lugar por plaza), marcadores y enlace de regreso al índice en el encabezado de cada página.
+Enlace "Clic aquí" a la carpeta de Drive con los reportes individuales en la portada, el índice y el pie de cada página
+(`DRIVE_URL` en `build_consolidado.py`).
 - Programas diarios: entran solo si tienen reporte de ese mismo día; si no, se omiten (el índice los lista como no incluidos).
 - Programas de fin de semana (Rumbo al Campeonato): entra su emisión del fin de semana inmediato anterior; si no existe, se omite.
 - `python3 build_consolidado.py --elaborado <HOY>` revisa todos los días desde el 1 nov 2026 y solo regenera los que
