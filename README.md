@@ -26,6 +26,7 @@ Enlace "Clic aquí" a la carpeta de Drive con los reportes individuales en la po
 (`DRIVE_URL` en `build_consolidado.py`).
 - Programas diarios: entran solo si tienen reporte de ese mismo día; si no, se omiten (el índice los lista como no incluidos).
 - Programas de fin de semana (Rumbo al Campeonato): entra su emisión del fin de semana inmediato anterior; si no existe, se omite.
+- La fecha del nombre, la portada ("Datos al") y los encabezados es la del último dato incluido; ningún consolidado trae datos posteriores a esa fecha. El índice muestra la fecha de cada programa.
 - `python3 build_consolidado.py --elaborado <HOY>` revisa todos los días desde el 1 nov 2026 y solo regenera los que
   cambiaron (`Consolidado/manifest.json` guarda el sha256 de los reportes de entrada). Lo corre una tarea programada L–V 11:40.
 

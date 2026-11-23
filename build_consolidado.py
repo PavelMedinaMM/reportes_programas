@@ -1,10 +1,13 @@
 #!/usr/bin/env python3
 """Reporte consolidado de programas Canal 6.
 
-Un consolidado por día hábil (Consolidado/Consolidado_Programas_<AAAA-MM-DD>.pdf) con:
+Un consolidado por día hábil con:
   - los programas diarios que tienen reporte de ese mismo día (si no lo tienen, no se incluyen),
-  - los programas de fin de semana con su emisión del sáb/dom de la misma semana (lunes a
-    domingo); si aún no existe, la del fin de semana anterior; si tampoco, no se incluyen.
+  - los programas de fin de semana con su emisión más reciente que no sea posterior a ese día
+    (fin de semana inmediato anterior); si no existe, no se incluyen.
+El nombre (Consolidado/Consolidado_Programas_<AAAA-MM-DD>.pdf), la portada y los encabezados
+usan la fecha del último dato incluido, para que ningún consolidado traiga datos posteriores
+a la fecha que lo identifica.
 Arma un solo PDF con:
   - portada,
   - índice con share de franja y lugar por plaza (cada fila es un enlace al programa),
@@ -141,9 +144,15 @@ def pie_drive(W, H, F, FB):
     return buf.getvalue(), (x1 - 2, 1, W - 38, 13)
 
 
+def ultimo_dato(paths):
+    """Fecha del dato más reciente entre los reportes incluidos (según el nombre del PDF)."""
+    return max(dt.date.fromisoformat(re.search(r"(\d{4}-\d{2}-\d{2})\.pdf$", p).group(1)) for p in paths)
+
+
 def build_front(reps, W, H, elaborado, F, FB, first_pages, dia, omitidos):
     buf = io.BytesIO(); c = canvas.Canvas(buf, pagesize=(W, H))
-    corte = dia
+    corte = max(r["fecha"] for r in reps)
+    previos = sorted({r["fecha"] for r in reps if r["fecha"] < corte})
 
     # ---- Portada
     c.setFillColor(BG); c.rect(0, 0, W, H, stroke=0, fill=1)
@@ -155,10 +164,14 @@ def build_front(reps, W, H, elaborado, F, FB, first_pages, dia, omitidos):
     c.drawString(58, H - 156, f"{len(reps)} programa{'s' if len(reps) != 1 else ''} · CDMX · Monterrey · Guadalajara · Fuente: HR Media")
     c.setStrokeColor(INK); c.setLineWidth(1); c.line(58, H - 190, W - 58, H - 190)
     y = H - 222
-    c.setFillColor(RED); c.setFont(FB, 9); c.drawString(58, y, "CORTE")
+    c.setFillColor(RED); c.setFont(FB, 9); c.drawString(58, y, "DATOS AL")
     c.setFillColor(INK); c.setFont(FB, 16); c.drawString(58, y - 22, fecha_larga(corte))
     c.setFillColor(GREY); c.setFont(F, 9)
-    c.drawString(58, y - 38, "Reportes de este día; programas de fin de semana: última emisión vigente.")
+    if previos:
+        c.drawString(58, y - 38, "Programas diarios: datos de este día. Fin de semana: última emisión ("
+                     + ", ".join(fecha_corta(f) for f in previos) + ").")
+    else:
+        c.drawString(58, y - 38, "Todos los programas con datos de este día.")
     c.setFillColor(RED); c.setFont(FB, 9); c.drawString(58, y - 80, "ELABORÓ")
     c.setFillColor(INK); c.setFont(FB, 16); c.drawString(58, y - 102, "Pavel Medina")
     c.setFillColor(GREY); c.setFont(F, 10); c.drawString(58, y - 118, "Dirección Data Analytics · Multimedios")
@@ -186,7 +199,7 @@ def build_front(reps, W, H, elaborado, F, FB, first_pages, dia, omitidos):
     c.showPage()
 
     # ---- Índice
-    draw_frame(c, W, H, F, FB, elaborado, f"REPORTE CONSOLIDADO · CANAL 6 · CORTE AL {corte.day} {MESES[corte.month-1][:3].upper()} {corte.year}")
+    draw_frame(c, W, H, F, FB, elaborado, f"REPORTE CONSOLIDADO · CANAL 6 · DATOS AL {corte.day} {MESES[corte.month-1][:3].upper()} {corte.year}")
     c.setFillColor(INK); c.setFont(FB, 24); c.drawString(38, H - 66, "Índice")
     c.setFillColor(GREY); c.setFont(F, 9)
     c.drawString(130, H - 62, "Share de franja del mes en curso · lugar por rating · haz clic en un programa para ir a su reporte")
@@ -272,15 +285,14 @@ def es_fin_de_semana(fechas):
 def seleccion(inv, dia):
     """Reportes que entran al consolidado de `dia` y programas omitidos.
     Diarios: solo si tienen reporte de ese mismo día.
-    Fin de semana (semana de lunes a domingo): su emisión del sáb/dom de la misma semana de `dia`;
-    si aún no existe, la del fin de semana anterior; si tampoco existe, se omite."""
-    domingo = dia + dt.timedelta(days=6 - dia.weekday())
-    misma = {domingo, domingo - dt.timedelta(days=1)}
-    anterior = {f - dt.timedelta(days=7) for f in misma}
+    Fin de semana: su emisión más reciente que no sea posterior a `dia` (fin de semana inmediato
+    anterior); si no existe, se omite. Así ningún consolidado trae datos posteriores a su fecha."""
+    lunes = dia - dt.timedelta(days=dia.weekday())
+    anterior = {lunes - dt.timedelta(days=1), lunes - dt.timedelta(days=2)}  # dom y sáb previos
     incl, omit = [], []
     for d, fechas in inv.items():
         if es_fin_de_semana(fechas):
-            ok = sorted(f for f in fechas if f in misma) or sorted(f for f in fechas if f in anterior)
+            ok = sorted(f for f in fechas if f in anterior)
             (incl.append(fechas[ok[-1]]) if ok else omit.append(d))
         else:
             (incl.append(fechas[dia]) if dia in fechas else omit.append(d))
@@ -335,7 +347,7 @@ def build(paths, omitidos, dia, elaborado, out):
             w.pages[i].compress_content_streams()
             w.add_annotation(page_number=i, annotation=Link(rect=(0, ph - 46, pw, ph), target_page_index=1, fit=Fit.fit()))
             w.add_annotation(page_number=i, annotation=Link(rect=prect, url=DRIVE_URL))
-    w.add_metadata({"/Title": f"Reporte consolidado de programas Canal 6 — {dia.isoformat()}",
+    w.add_metadata({"/Title": f"Reporte consolidado de programas Canal 6 — datos al {max(r['fecha'] for r in reps).isoformat()}",
                     "/Author": "Pavel Medina · Dirección Data Analytics · Multimedios"})
     w.page_mode = "/UseOutlines"
     w.compress_identical_objects()
@@ -366,13 +378,20 @@ def main():
         if not any(not es_fin_de_semana(inv[os.path.basename(os.path.dirname(p))]) for p in paths):
             print(f"{dia}: sin reportes diarios, no se genera"); continue
         firma = {os.path.relpath(p, ROOT): sha256(p) for p in paths}
-        out = os.path.join(OUT_DIR, f"Consolidado_Programas_{dia.isoformat()}.pdf")
-        prev = man.get(dia.isoformat(), {}).get("entradas")
-        if not a.force and prev == firma and os.path.exists(out):
+        corte = ultimo_dato(paths)
+        otro = next((k for k, v in man.items() if k != dia.isoformat() and v.get("corte") == corte.isoformat()), None)
+        if otro:
+            sys.exit(f"{dia}: el último dato ({corte}) coincide con el consolidado de {otro}; revisar la selección")
+        out = os.path.join(OUT_DIR, f"Consolidado_Programas_{corte.isoformat()}.pdf")
+        prev = man.get(dia.isoformat(), {})
+        if not a.force and prev.get("entradas") == firma and os.path.exists(out):
             continue
+        viejo = prev.get("archivo") and os.path.join(ROOT, prev["archivo"])
+        if viejo and os.path.abspath(viejo) != os.path.abspath(out) and os.path.exists(viejo):
+            os.remove(viejo)  # nombre anterior: se quita para no dejar dos versiones del mismo día
         omit_n = [nombres[d] for d in omit]
         reps, fps, n = build(paths, omit_n, dia, elaborado, out)
-        man[dia.isoformat()] = {"archivo": os.path.relpath(out, ROOT), "entradas": firma,
+        man[dia.isoformat()] = {"archivo": os.path.relpath(out, ROOT), "corte": corte.isoformat(), "entradas": firma,
                                 "omitidos": omit_n, "paginas": n, "elaborado": elaborado.isoformat()}
         gen += 1
         print(f"{dia}: {os.path.relpath(out, ROOT)} ({n} págs., {len(reps)} programas)"
