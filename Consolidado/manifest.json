@@ -283,5 +283,23 @@
   ],
   "paginas": 136,
   "elaborado": "2026-11-24"
+ },
+ "2026-11-24": {
+  "archivo": "Consolidado/Consolidado_Programas_2026-11-24.pdf",
+  "corte": "2026-11-24",
+  "entradas": {
+   "Telediario_Matutino/Telediario_Matutino_Desempeno_2026-11-24.pdf": "ee1e2d971bf7775c138af44ceeb51727fcb0a81ec3ac5e54a371a6878dcb954d",
+   "Vivalavi/Vivalavi_Desempeno_2026-11-24.pdf": "dee6f8d0c9e6cebd68f8031cb238203dd02530b9b1432e21341e6367e2d2a794",
+   "Telediario_Vespertino/Telediario_Vespertino_Desempeno_2026-11-24.pdf": "77f199aa72b6f7d65bdabe5489ee478469c5c47d3613ab6f10b64270f002771a",
+   "Tocando_al_Corazon/TAC_Desempeno_2026-11-24.pdf": "70303d89fbaf90a330a3c09d80be402b4a2d444a6d28db7f7c2850a4e7705040",
+   "Telediario_Nocturno/Telediario_Nocturno_Desempeno_2026-11-24.pdf": "7153d44d7ae083f6c5da61d9e47bc5ee73504fb42a62d168f48aa794e3505867",
+   "Cuando_los_Angeles_Caen/CLAC_Desempeno_2026-11-24.pdf": "16f0c2c174b142e31c5a0103b805976d63f258d72c382b80c95b8726e79bfd24",
+   "Rumbo_al_Campeonato/Rumbo_al_Campeonato_Desempeno_2026-11-22.pdf": "23664c892ad46551d3446bf0d5519f0cb110f6a534090fdeb225622314a683e3"
+  },
+  "omitidos": [
+   "C4 en Alerta"
+  ],
+  "paginas": 136,
+  "elaborado": "2026-11-25"
  }
 }
