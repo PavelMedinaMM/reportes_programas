@@ -301,5 +301,23 @@
   ],
   "paginas": 136,
   "elaborado": "2026-11-25"
+ },
+ "2026-11-25": {
+  "archivo": "Consolidado/Consolidado_Programas_2026-11-25.pdf",
+  "corte": "2026-11-25",
+  "entradas": {
+   "Telediario_Matutino/Telediario_Matutino_Desempeno_2026-11-25.pdf": "0c10a01f43ebdce90469cc2aab3ed715cf397a9948055f4a6a4148b1b8175c73",
+   "Vivalavi/Vivalavi_Desempeno_2026-11-25.pdf": "f7726a693606517ff9ca7a49b36da1aeb460285341d0eb7a8aeb4a47ace4eb21",
+   "Telediario_Vespertino/Telediario_Vespertino_Desempeno_2026-11-25.pdf": "43a0d576060388603a0ea2bd7bf20181757defdd052dd21aba9d6ccaa748ebd3",
+   "Tocando_al_Corazon/TAC_Desempeno_2026-11-25.pdf": "bfd83f8b64980c00e082bc9eb48e588978df29b035b3ce0df431329c1afb601c",
+   "Cuando_los_Angeles_Caen/CLAC_Desempeno_2026-11-25.pdf": "81010af97b4acfe1a8a678948fd5bf7c8ffdd4e3cf886c4bb84ee7c04f367395",
+   "Rumbo_al_Campeonato/Rumbo_al_Campeonato_Desempeno_2026-11-22.pdf": "23664c892ad46551d3446bf0d5519f0cb110f6a534090fdeb225622314a683e3"
+  },
+  "omitidos": [
+   "C4 en Alerta",
+   "Telediario Nocturno"
+  ],
+  "paginas": 116,
+  "elaborado": "2026-11-26"
  }
 }
